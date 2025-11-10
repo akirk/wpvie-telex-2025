@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Building WordPress Blocks with Telex</title>
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/moon.css">
+	<style>
+		:root {
+			--r-heading1-size: 3em;
+		}
+		object {
+			fill: var( --r-background-color );
+			background: var( --r-background-color );
+		}
+		.reveal ul {
+			margin-left: 0;
+			padding-left: 0;
+		}
+		ul li, ol li {
+			margin-bottom: .6em;
+		}
+		ul li {
+			list-style-type: none;
+		}
+		ul li ul li:first-child {
+			margin-top: .2em;
+		}
+		ul li ul li {
+			margin-bottom: .2em;
+			list-style-type: "- ";
+		}
+		ul li ul li.arrow {
+			margin-left: .8em;
+			list-style-type: "→ ";
+		}
+
+		table.contact {
+			margin-top: .5em;
+		}
+		table.contact tr td, table.contact tr td a {
+			color: var( --r-main-color );
+		}
+		table.contact tr td {
+			font-size: 90%;
+			border-bottom: 0;
+		}
+		a:link {
+			text-decoration: underline;
+		}
+		a:link, a:active, a:visited {
+			color: var( --r-main-color );
+		}
+		a.highlight:link, a.highlight:active, a.highlight:visited, a.highlight:hover {
+			color: var( --r-link-color );
+		}
+		.current-fragment a.highlight:link, .current-fragment a.highlight:visited {
+			color: var( --r-link-color-hover );
+		}
+		.current-fragment, .current-fragment a:link, .current-fragment a:visited, .white {
+			color: white;
+		}
+		.small {
+			font-size: 80%;
+		}
+		.blue {
+			color: var( --r-link-color );
+		}
+		tt {
+			border-radius: 4px;
+			border: 1px solid #666;
+			padding: 2px 6px;
+		}
+	</style>
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>Building WordPress Blocks<br/>with Telex</h1>
+				<h3>AI-Powered Block Creation + WordPress Playground</h3>
+				<div style="font-size: .5em; margin-top: 1em">
+					<img src="img/alex.kirk.jpg" width="128" alt="Alex Kirk" style="border-radius: 64px"/><br/>
+					Alex Kirk
+					<table class="contact">
+						<tr><td>Blog</td><td><a href="https://alex.kirk.at/">https://alex.kirk.at/</a></td></tr>
+						<tr><td>Matrix</td><td>@alex:kirk.at</td></tr>
+						<tr><td>ActivityPub</td><td>@alex@kirk.at</td></tr>
+					</table>
+				</div>
+			</section>
+
+			<section>
+				<h2>Alex Kirk</h2>
+				<ul>
+					<li class="fragment">Born and raised in Vienna, Austria</li>
+					<li class="fragment">At <a href="https://automattic.com/" class="highlight" target="_blank">Automattic</a> (runs WordPress.com &amp; more) since 2014
+						<ul>
+							<li class="fragment">Engineer, leading teams around Localization, Playground, Data Liberation, and previously, Matrix</li>
+							<li class="fragment">Sponsored to contribute to WordPress.org in Meta and Polyglots</li>
+						</ul>
+					</li>
+					<li class="fragment">Sideprojects in the decentralized web space
+						<ul>
+							<li class="fragment"><a href="https://wordpress.org/plugins/friends/" class="highlight" target="_blank">Friends Plugin</a>: Make your blog your own hub for subscribing to and interacting with others via RSS, ActivityPub, ...</li>
+							<li class="fragment"><a href="https://wordpress.org/plugins/enable-mastodon-apps/" class="highlight" target="_blank">Enable Mastodon Apps</a>: Use <a href="https://tapbots.com/ivory/">Ivory</a>, <a href="https://github.com/tuskyapp/Tusky/">Tusky</a>, ... with your site</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Agenda</h2>
+				<ul>
+					<li class="fragment">What is Telex?</li>
+					<li class="fragment">How does Telex work?</li>
+					<li class="fragment">The role of WordPress Playground</li>
+					<li class="fragment">Vibe Coding with AI &amp; Playground</li>
+					<li class="fragment">Block examples &amp; tools (Blocktober, My Telex Blocks)</li>
+					<li class="fragment">Playground in your workflow (AI tools, GitHub Actions)</li>
+					<li class="fragment">Live Demo</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>What is Telex?</h2>
+				<ul>
+					<li class="fragment">AI-powered WordPress block builder by Automattic</li>
+					<li class="fragment"><a href="https://telex.automattic.ai/" class="highlight" target="_blank">https://telex.automattic.ai/</a></li>
+					<li class="fragment">The problem: Creating blocks requires JS/React knowledge</li>
+					<li class="fragment">The solution: Describe what you want → get a working block</li>
+					<li class="fragment">Test immediately in editor and frontend (uses Playground), refine, download</li>
+				</ul>
+			</section>
+
+			<section class="r-fit-text">
+				<p><a href="https://telex.automattic.ai/" class="highlight" target="_blank">https://telex.automattic.ai/</a></p>
+				<img src="img/telex.gif" alt="telex.automattic.ai"/>
+			</section>
+
+			<section>
+				<h2>How Telex Works</h2>
+				<ol>
+					<li class="fragment">Describe your block idea in plain language</li>
+					<li class="fragment">AI generates the block code</li>
+					<li class="fragment">Instant preview by using WordPress Playground</li>
+					<li class="fragment">Refine with additional instructions</li>
+					<li class="fragment">Download as a plugin</li>
+					<li class="fragment">Install on your WordPress site</li>
+				</ol>
+			</section>
+
+			<section>
+				<h2>Blocktober: Inspiration for Blocks</h2>
+				<p><a href="https://blocktober.fun/" class="highlight" target="_blank">https://blocktober.fun/</a></p>
+				<ul>
+					<li class="fragment">Project by <a href="https://tammielister.com/" class="highlight" target="_blank">Tammie Lister</a></li>
+					<li class="fragment">Challenge: Create a block every day in October using Telex</li>
+					<li class="fragment">Great source of inspiration for your own block ideas</li>
+					<li class="fragment">Examples: <a href="https://blocktober.fun/trick-or-treat/" class="highlight" target="_blank">Trick or Treat</a>, <a href="https://blocktober.fun/filter-table/" class="highlight" target="_blank">Filter Table</a>, <a href="https://blocktober.fun/bar-chart/" class="highlight" target="_blank">Bar Chart</a>, <a href="https://blocktober.fun/link-preview/" class="highlight" target="_blank">Link Preview</a>, <a href="https://blocktober.fun/polaroid/" class="highlight" target="_blank">Polaroid</a>, <a href="https://blocktober.fun/sketch-image/" class="highlight" target="_blank">Sketch Image</a>, ...</li>
+					<li class="fragment">Shows the variety of possibilities with Telex</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Combining Multiple Blocks</h2>
+				<p><a href="https://akirk.github.io/my-telex-blocks/" class="highlight" target="_blank">https://akirk.github.io/my-telex-blocks/</a></p>
+				<ul>
+					<li class="fragment">Each Telex block is its own plugin</li>
+					<li class="fragment">Many blocks can take over your plugins page</li>
+					<li class="fragment">Tool to combine multiple Telex blocks into one plugin</li>
+					<li class="fragment">Drag &amp; drop multiple plugin ZIPs</li>
+					<li class="fragment">Customize plugin name, description, and author</li>
+					<li class="fragment">One plugin instead of many individual blocks</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>WordPress Playground</h2>
+				<ul>
+					<li class="fragment">Powers Telex: you can see your block right away</li>
+					<li class="fragment">WordPress runs entirely in your browser</li>
+					<li class="fragment">Runs PHP, boots WordPress using a blueprint</li>
+					<li class="fragment">Ephemeral but you can also persist playgrounds</li>
+					<li class="fragment">Perfect for: testing, demos, learning, experiments</li>
+					<li class="fragment"><a href="https://playground.wordpress.net/" class="highlight" target="_blank">https://playground.wordpress.net/</a></li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Recent Playground Updates</h2>
+				<p class="small"><a href="https://make.wordpress.org/playground/" class="highlight" target="_blank">make.wordpress.org/playground</a></p>
+				<ul>
+					<li class="fragment"><a href="https://make.wordpress.org/playground/2025/10/30/the-new-wordpress-playground-file-browser-and-ui-enhancements/" class="highlight" target="_blank">Now features a file browser/editor</a><ul><li class="arrow">edit files, add folders via drag &amp; drop</li></ul></li>
+					<li class="fragment">Improvements in feature parity with WordPress<ul><li>SQLite, php extensions</li></ul></li>
+					<li class="fragment">Updates to Playground CLI, replacing wp-now</li>
+					<li class="fragment">Find out more in the post<br><a href="https://make.wordpress.org/playground/2025/10/23/things-you-might-have-missed-about-the-playground-project-over-the-past-few-months/" class="highlight" target="_blank">Things you might have missed about the Playground Project</a></li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Coding Anywhere with AI</h2>
+				<ul>
+					<li class="fragment">Web coding AI tools:
+						<ul>
+							<li class="fragment"><a href="https://claude.ai/code" class="highlight" target="_blank">Claude Code</a>, <a href="https://openai.com/codex" class="highlight" target="_blank">OpenAI Codex</a>, <a href="https://codeassist.google/" class="highlight" target="_blank">Google Code Assist</a></li>
+						</ul>
+					</li>
+					<li class="fragment">Run on their own remote sandboxes</li>
+					<li class="fragment">Playground allows you to test WordPress code without local environment</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Develop from Anywhere</h2>
+				<ul>
+					<li class="fragment">Quickly try out ideas on mobile or tablet</li>
+					<li class="fragment">Fix small bugs on the go</li>
+					<li class="fragment">Test changes in Playground</li>
+					<li class="fragment">When ready, create a PR</li>
+					<li class="fragment">No need for a programming keyboard or local setup</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Playground in Your Workflow</h2>
+				<p class="small"><a href="https://github.com/akirk/friends/blob/main/CLAUDE.md" class="highlight" target="_blank">Example: CLAUDE.md in the Friends Plugin</a></p>
+				<ul>
+					<li class="fragment">Instruct your AI to generate Playground links</li>
+					<li class="fragment">Automatic preview links for every branch</li>
+					<li class="fragment">Format: <tt class="small">playground.wordpress.net/#{...}</tt></li>
+					<li class="fragment">Install plugin directly from GitHub branch</li>
+					<li class="fragment">Instant testing without local setup</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Playground Step Library</h2>
+				<p class="small"><a href="https://akirk.github.io/playground-step-library/" class="highlight" target="_blank">https://akirk.github.io/playground-step-library/</a></p>
+				<ul>
+					<li class="fragment">Visual builder for creating Playground blueprints</li>
+					<li class="fragment">Drag &amp; drop steps to automate WordPress setup</li>
+					<li class="fragment">Helps create well-crafted blueprints for your plugin</li>
+					<li class="fragment">Example: "Load Feeds into the Friends plugin" blueprint</li>
+					<li class="fragment">Generate shareable configurations for demos &amp; testing</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>GitHub Actions &amp; Automation</h2>
+				<ul>
+					<li class="fragment">Automatic Playground previews for pull requests
+						<ul>
+							<li class="fragment small"><a href="https://github.com/WordPress/action-wp-playground-pr-preview" class="highlight" target="_blank">GitHub Action: action-wp-playground-pr-preview</a></li>
+							<li class="fragment">"Try it in WordPress Playground" button for every PR</li>
+							<li class="fragment">Auto-update on new commits</li>
+						</ul>
+					</li>
+					<li class="fragment">Private repository support (in development)
+						<ul>
+							<li class="fragment small"><a href="https://github.com/WordPress/wordpress-playground/pull/2856" class="highlight" target="_blank">PR #2856</a>: GitHub OAuth for private repos</li>
+							<li class="fragment">Test private projects in Playground too</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Getting Started &amp; Tips</h2>
+				<ul>
+					<li class="fragment">Visit <a href="https://telex.automattic.ai/" class="highlight" target="_blank">telex.automattic.ai</a> or <a href="https://playground.wordpress.net/" class="highlight" target="_blank">playground.wordpress.net</a></li>
+					<li class="fragment">Be specific, use natural language</li>
+					<li class="fragment">Start simple, then iterate and refine</li>
+					<li class="fragment">Test thoroughly in Playground</li>
+					<li class="fragment">AI-assisted development democratizes WordPress development</li>
+				</ul>
+			</section>
+
+			<section>
+				<h1>Live Demo</h1>
+				<p class="fragment">Let's build a block together!</p>
+			</section>
+
+			<section>
+				<h2>Resources</h2>
+				<ul>
+					<li><a href="https://telex.automattic.ai/" class="highlight" target="_blank">Telex</a> - AI Block Builder</li>
+					<li><a href="https://playground.wordpress.net/" class="highlight" target="_blank">WordPress Playground</a></li>
+					<li><a href="https://make.wordpress.org/playground/" class="highlight" target="_blank">Make WordPress Playground</a> - Project blog</li>
+					<li><a href="https://blocktober.fun/" class="highlight" target="_blank">Blocktober.fun</a> - Block examples</li>
+					<li><a href="https://akirk.github.io/my-telex-blocks/" class="highlight" target="_blank">My Telex Blocks</a> - Combine blocks</li>
+					<li><a href="https://github.com/WordPress/action-wp-playground-pr-preview" class="highlight" target="_blank">GitHub Action</a> - Playground PR Previews</li>
+					<li><a href="https://developer.wordpress.org/block-editor/" class="highlight" target="_blank">Block Editor Handbook</a></li>
+					<li><a href="https://github.com/WordPress/wordpress-playground" class="highlight" target="_blank">Playground on GitHub</a></li>
+				</ul>
+			</section>
+
+			<section>
+				<h1>Thank You!</h1>
+				<h2>Questions?</h2>
+				<p>
+					<a href="https://alex.kirk.at/wpvie-telex-2025/" class="highlight" target="_blank">https://alex.kirk.at/wpvie-telex-2025/</a><br/>
+				</p>
+			</section>
+		</div>
+	</div>
+	<script src="dist/reveal.js"></script>
+	<script src="dist/plugin/notes/notes.js"></script>
+	<script src="dist/plugin/slide-nav/slide-nav.js"></script>
+	<script>
+		Reveal.initialize({
+			controls: true,
+			controlsTutorial: true,
+			progress: true,
+			hash: true,
+			autoPlayMedia: true,
+			slideNumber: 'c/t',
+			width: 1200,
+		}).then( () => {
+		});
+		const videos = document.querySelectorAll('video');
+
+		videos.forEach(function(video) {
+			video.addEventListener('click', function() {
+				video.currentTime = 0; // Resets video playback to the beginning
+				video.play(); // Starts the video playback
+			});
+		});
+
+	</script>
+</body>
+</html>
